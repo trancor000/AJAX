@@ -22,23 +22,19 @@
             ajax.open('GET', 'content.html');
 
             // STEP 3: define the ajax response callback method
-            function loadDoc() {
-                var ajax = new XMLHttpRequest();
-                ajax.onreadystatechange = function () {
-                    if (ajax.readyState == 4 && this.status == 200) {
-                        document.getElementById('content').innerHTML = ajax.responseText;
-                    }
+            ajax.onreadystatechange = function () {
+                if (ajax.readyState == 4) {
+                    document.getElementById('content').innerHTML = ajax.responseText;
                 }
-                ajax.open("GET", "ajax_info.txt", true);
+            }
+
+            // Step 4: send the ajax request for data
+            function getContent() {
                 ajax.send();
-
-                // Step 4: send the ajax request for data
-                function getContent() {
-                    ajax.send();
-                    document.getElementById('btn_Content').style.display = 'none';
-                }
-
+                document.getElementById('btn_Content').style.display = 'none';
+            }
         </script>
+    </div>
 </body>
 
 </html>
